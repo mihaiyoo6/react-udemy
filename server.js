@@ -8,8 +8,9 @@ var app = express();
 app.set('port', (process.env.PORT || 3000));
 
 //set static path
-app.use(express.static(path.join(__dirname, 'client')));
-
+app.use('/', express.static(path.join(__dirname, 'client')));
+app.use('/first', express.static(path.join(__dirname, 'firstComponent')));
+app.use('/form', express.static(path.join(__dirname, 'regForm')));
 //BOdyPArser Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
