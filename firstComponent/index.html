@@ -1,0 +1,30 @@
+<html>
+	<head>
+		<title>UDEMY - React</title>
+	</head>
+	<body>
+		<div id="app"></div>
+	</body>
+		<script src="https://fb.me/react-0.14.3.min.js"></script>
+		<script src="https://fb.me/react-dom-0.14.3.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+		<script type="text/babel">
+			var HelloMessage = React.createClass({
+				sayMessage : function(){
+					alert(this.props.children)
+				},
+				render: function(){
+					return (
+					<div>
+						<div> Hello {this.props.word}</div>
+						<p onClick={this.sayMessage}>{this.props.children}</p>
+					</div>
+					);
+				}
+			});
+
+			ReactDOM.render(<HelloMessage word="Hello">What are you up to?</HelloMessage>,
+				document.getElementById('app')
+			);
+		</script>
+</html>
