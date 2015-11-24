@@ -11,6 +11,7 @@ app.set('port', (process.env.PORT || 3000));
 app.use('/', express.static(path.join(__dirname, 'client')));
 app.use('/first', express.static(path.join(__dirname, 'firstComponent')));
 app.use('/form', express.static(path.join(__dirname, 'regForm')));
+app.use('/life', express.static(path.join(__dirname, 'lifeCycle')));
 //BOdyPArser Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
