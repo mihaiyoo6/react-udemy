@@ -1,0 +1,24 @@
+{
+  "name": "react-udemy",
+  "version": "0.0.1",
+  "description": "udemy react course ",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mihaiyoo6/react-udemy.git"
+  },
+  "keywords": [
+    "udemy",
+    "react",
+    "mihaiyoo6"
+  ],
+  "author": "Mihai Mijea",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mihaiyoo6/react-udemy/issues"
+  },
+  "homepage": "https://github.com/mihaiyoo6/react-udemy#readme"
+}
