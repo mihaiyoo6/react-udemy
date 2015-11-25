@@ -1,0 +1,26 @@
+[
+   {
+      "id": 3325038,
+      "name": "iPad Mini",
+      "description": "Selling a Brand New Sealed in the box IPAD MINI 4. This is the newest Ipad on the market. This model is Gold and is 16gb.",
+      "price": 399.99,
+      "buy_url": "http://www.ebay.com/itm/Apple-iPad-mini-4-16GB-Wi-Fi-7-9in-Gold-Latest-Model-Brand-New-Sealed-/151887960692?hash=item235d3a5a74:g:VM4AAOSwiwVWTBsz",
+      "image_url": "http://thumbs.ebaystatic.com/d/l200/m/m0YNdoq-QIsGznUX7gq6FeQ.jpg"
+   },
+   {
+      "id": 4523500,
+      "name": "Microsoft Surface",
+      "description": "New Microsoft Surface 2 RT 10.6 32GB Multi-Touch Windows Wi-Fi Tablet P3W-00001",
+      "price": 269.99,
+      "buy_url": "http://www.ebay.com/itm/New-Microsoft-Surface-2-RT-10-6-32GB-Multi-Touch-Windows-Wi-Fi-Tablet-P3W-00001-/321912803848?hash=item4af37f9208:g:dzUAAOSwu-BWO9KO",
+      "image_url": "http://thumbs.ebaystatic.com/d/l200/m/m8M6G106xFuUkga8AKSaKWQ.jpg"
+   },
+   {
+      "id": 3325038,
+      "name": "Dell Inspiron PC",
+      "description": "Dell Inspiron 580 PC/Desktop Intel Core i5 750 2.67GHz 6GB DDR3 RAM 250GB HDD",
+      "price": 199.99,
+      "buy_url": "http://www.ebay.com/itm/Dell-Inspiron-580-PC-Desktop-Intel-Core-i5-750-2-67GHz-6GB-DDR3-RAM-250GB-HDD-/121822724120?hash=item1c5d334018:g:q7AAAOSwbdpWU26e",
+      "image_url": "http://i.ebayimg.com/images/g/q7AAAOSwbdpWU26e/s-l1600.jpg"
+   }
+]
