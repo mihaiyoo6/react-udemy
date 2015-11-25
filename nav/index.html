@@ -1,0 +1,63 @@
+<html>
+	<head>
+		<title>UDEMY - React</title>
+		<link rel="stylesheet" href="../styles/bootstrap.3.3.5.min.css">
+		<style>
+			ul.nav{
+				padding: 10px;
+				background: #eeeeee;
+				font-size: 18px;
+			}
+			ul.nav li{
+				padding: 10px;
+				float: left;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 col-md-offset-4">
+					<h1 class="page-header">States</h1>
+					<div id="app"></div>
+				</div>
+			</div>
+		</div>
+	</body>
+		<script src="../libs/react-0.14.3.js"></script>
+		<script src="../libs/react-dom-0.14.3.js"></script>
+		<script src="../libs/browser.5.8.25.min.js"></script>
+		<script type="text/babel">
+		var Nav = React.createClass({
+			getInitialState : function(){
+				return {
+					current: 0
+				}
+			},
+			clicked: function(index){
+				this.setState({
+					current: index
+				});
+			},
+			render: function(){
+				var self = this;
+				return(
+					<div>
+						<ul className="nav">
+							{this.props.menuItems.map(function(m, index){
+								var style = self.state.current == index ? 'current' : '';
+								return <li className={style} onClick={self.clicked.bind(self, index)} key={index}>{m}</li>
+							})}
+						</ul>
+						<h1>{this.props.menuItems[this.state.current]}</h1>
+					</div>
+				)
+			}
+		});
+
+		ReactDOM.render(<Nav menuItems={['Home', 'About', "Services", 'Contact']} />,
+			document.getElementById('app')
+		);
+		</script>
+</html>

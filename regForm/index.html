@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<title>UDEMY - React</title>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../styles/bootstrap.3.3.5.min.css">
 	</head>
 	<body>
 		<div class="container">
@@ -13,9 +13,9 @@
 			</div>
 		</div>
 	</body>
-		<script src="https://fb.me/react-0.14.3.min.js"></script>
-		<script src="https://fb.me/react-dom-0.14.3.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+		<script src="../libs/react-0.14.3.js"></script>
+		<script src="../libs/react-dom-0.14.3.js"></script>
+		<script src="../libs/browser.5.8.25.min.js"></script>
 		<script type="text/babel">
 			var AlertBox = React.createClass({
 				render: function(){
@@ -37,17 +37,17 @@
 					var firstName = this.refs.firstName.value.trim();
 					var lastName = this.refs.lastName.value.trim();
 					var email = this.refs.email.value.trim();
-					var notComplet = !firstName || !lastName || !email
+					var notComplete = !firstName || !lastName || !email
 					var self = this;
 					this.setState({
 						showAlert: true,
-						type:  notComplet ? 'danger' : 'success',
-						text: notComplet? 'Please fill in all fields!' : 'Thanks for registering!'
+						type:  notComplete ? 'danger' : 'success',
+						text: notComplete ? 'Please fill in all fields!' : 'Thanks for registering!'
 					});
 
 					console.log(firstName, lastName, email);
 					
-					if(!notComplet){
+					if(!notComplete){
 						this.refs.firstName.value = '';
 						this.refs.lastName.value = '';
 						this.refs.email.value = '';
