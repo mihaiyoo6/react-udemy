@@ -16,11 +16,19 @@
       "image_url": "http://thumbs.ebaystatic.com/d/l200/m/m8M6G106xFuUkga8AKSaKWQ.jpg"
    },
    {
-      "id": 3325038,
+      "id": 332503,
       "name": "Dell Inspiron PC",
       "description": "Dell Inspiron 580 PC/Desktop Intel Core i5 750 2.67GHz 6GB DDR3 RAM 250GB HDD",
       "price": 199.99,
       "buy_url": "http://www.ebay.com/itm/Dell-Inspiron-580-PC-Desktop-Intel-Core-i5-750-2-67GHz-6GB-DDR3-RAM-250GB-HDD-/121822724120?hash=item1c5d334018:g:q7AAAOSwbdpWU26e",
       "image_url": "http://i.ebayimg.com/images/g/q7AAAOSwbdpWU26e/s-l1600.jpg"
+   },
+   {
+      "id": "210",
+      "name": "TEST",
+      "description": "TEST",
+      "price": "1000",
+      "buy_url": "http://www.mijeamihai.com",
+      "image_url": "https://avatars3.githubusercontent.com/u/2699073?v=3&s=460"
    }
 ]

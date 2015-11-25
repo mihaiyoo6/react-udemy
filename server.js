@@ -18,6 +18,8 @@ app.use('/form', express.static(path.join(__dirname, 'client/regForm')));
 app.use('/life', express.static(path.join(__dirname, 'client/lifeCycle')));
 app.use('/props', express.static(path.join(__dirname, 'client/props')));
 app.use('/state', express.static(path.join(__dirname, 'client/nav')));
+app.use('/ajax', express.static(path.join(__dirname, 'client/ajax')));
+
 //BOdyPArser Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
