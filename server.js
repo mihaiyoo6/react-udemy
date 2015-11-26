@@ -20,6 +20,7 @@ app.use('/props', express.static(path.join(__dirname, 'client/props')));
 app.use('/state', express.static(path.join(__dirname, 'client/nav')));
 app.use('/ajax', express.static(path.join(__dirname, 'client/ajax')));
 app.use('/animation', express.static(path.join(__dirname, 'client/animation')));
+app.use('/bind', express.static(path.join(__dirname, 'client/dataBinding')));
 //BOdyPArser Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));

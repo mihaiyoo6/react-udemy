@@ -1,0 +1,51 @@
+<html>
+	<head>
+		<title>UDEMY - React</title>
+		<!--<link rel="stylesheet" href="../styles/bootstrap.3.3.5.min.css">-->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<style>
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3">
+					<h1 class="page-header">React Two way data binding</h1>
+					<div id="app"></div>
+				</div>
+			</div>
+		</div>
+	</body>
+		<script src="../libs/react-with-addons-0.14.3.js"></script>
+		<script src="../libs/react-dom-0.14.3.js"></script>
+		<script src="../libs/browser.5.8.25.min.js"></script>
+		<script src="../libs/jquery-1.11.3.min.js"></script>
+		<script type="text/babel">
+			var MyComponent = React.createClass({
+				mixins: [React.addons.LinkedStateMixin],
+				getInitialState: function(){
+					return{
+						value: 'Some Value'
+					}
+				},
+				render: function(){
+					return(
+						<div>
+							<h4>{this.state.value}</h4>
+							<MyInput  valueLink = {this.linkState('value')} />
+						</div>
+					);
+				}
+			});
+
+			var MyInput = React.createClass({
+				render: function(){
+					return(
+						<input type="text" valueLink={this.props.valueLink} />
+					);
+				}
+			});
+
+			ReactDOM.render(<MyComponent />, document.getElementById('app'));
+		</script>
+</html>
