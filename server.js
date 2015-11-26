@@ -19,7 +19,7 @@ app.use('/life', express.static(path.join(__dirname, 'client/lifeCycle')));
 app.use('/props', express.static(path.join(__dirname, 'client/props')));
 app.use('/state', express.static(path.join(__dirname, 'client/nav')));
 app.use('/ajax', express.static(path.join(__dirname, 'client/ajax')));
-
+app.use('/animation', express.static(path.join(__dirname, 'client/animation')));
 //BOdyPArser Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
