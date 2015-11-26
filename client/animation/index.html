@@ -4,28 +4,20 @@
 		<!--<link rel="stylesheet" href="../styles/bootstrap.3.3.5.min.css">-->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 		<style>
-			#app div div{
-				padding: 10px;
-				background: #fefefe;
-				border: 1px solid black;
-				display: block;
-				width: 100%;
-				margin: 5px 0;
-			}
-			.app-enter {
+			.example-enter {
 			  opacity: 0.01;
 			}
 
-			.app-enter.app-enter-active {
+			.example-enter.example-enter-active {
 			  opacity: 1;
 			  transition: opacity 500ms ease-in;
 			}
 
-			.app-leave {
+			.example-leave {
 			  opacity: 1;
 			}
 
-			.app-leave.app-leave-active {
+			.example-leave.example-leave-active {
 			  opacity: 0.01;
 			  transition: opacity 300ms ease-in;
 			}
@@ -47,77 +39,39 @@
 		<script src="../libs/browser.5.8.25.min.js"></script>
 		<script src="../libs/jquery-1.11.3.min.js"></script>
 		<script type="text/babel">
-			// var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
-			// var TaskList = React.createClass({
-			// 	getInitialState: function(){
-			// 		return {
-			// 			items: ["Bring the kids to school - 7am"]
-			// 		}
-			// 	},
-			// 	addItem: function(){
-			// 		var newItems = this.state.items.concat([prompt("Add a new Task")]);
-			// 		this.setState({items: newItems});
-			// 	},
-			// 	removeItem: function(index){
-			// 		console.log(index);
-			// 		var newItems = this.state.items;
-			// 		console.log(newItems);
-			// 		newItems.splice(index, 1);
-			// 		console.log(newItems);
-			// 		this.setState({items: newItems});
-			// 	},
-			// 	render: function(){
-			// 		var items = this.state.items.map(function(item, index){
-			// 			return(
-			// 				<div key={index} onClick={this.removeItem.bind(this, index)}>{item}</div>
-			// 			)
-			// 		}.bind(this));
-
-			// 		return(
-			// 			<div>
-			// 				<button className="btn btn-primary btn-block" onClick={this.addItem}>Add Task</button>
-			// 				<ReactCSSTransitionGroup transitionName="example" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
-			// 		          {items}
-			// 				</ReactCSSTransitionGroup>
-			// 			</div>
-			// 		);
-			// 	}
-			// });
-var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;// require('react-addons-css-transition-group');
-
-var TodoList = React.createClass({
-  getInitialState: function() {
-    return {items: ['hello', 'world', 'click', 'me']};
-  },
-  handleAdd: function() {
-    var newItems =
-      this.state.items.concat([prompt('Enter some text')]);
-    this.setState({items: newItems});
-  },
-  handleRemove: function(i) {
-    var newItems = this.state.items;
-    newItems.splice(i, 1);
-    this.setState({items: newItems});
-  },
-  render: function() {
-    var items = this.state.items.map(function(item, i) {
-      return (
-        <div key={item} onClick={this.handleRemove.bind(this, i)}>
-          {item}
-        </div>
-      );
-    }.bind(this));
-    return (
-      <div>
-        <button onClick={this.handleAdd}>Add Item</button>
-        <ReactCSSTransitionGroup transitionName="example" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
-          {items}
-        </ReactCSSTransitionGroup>
-      </div>
-    );
-  }
-});
-
-ReactDOM.render(<TodoList />, document.getElementById('app'));
+			var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+			var TodoList = React.createClass({
+			  getInitialState: function() {
+			    return {items: ['hello', 'world', 'click', 'me']};
+			  },
+			  handleAdd: function() {
+			    var newItems =
+			      this.state.items.concat([prompt('Enter some text')]);
+			    this.setState({items: newItems});
+			  },
+			  handleRemove: function(i) {
+			    var newItems = this.state.items;
+			    newItems.splice(i, 1);
+			    this.setState({items: newItems});
+			  },
+			  render: function() {
+			    var items = this.state.items.map(function(item, i) {
+			      return (
+			        <div className="well"  key={item} onClick={this.handleRemove.bind(this, i)}>
+			          {item}
+			        </div>
+			      );
+			    }.bind(this));
+			    return (
+			      <div>
+			        <button className="btn btn-primary btn-block" onClick={this.handleAdd}>Add Item</button>
+			        <ReactCSSTransitionGroup transitionName="example" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
+			          {items}
+			        </ReactCSSTransitionGroup>
+			      </div>
+			    );
+			  }
+			});
+			ReactDOM.render(<TodoList />, document.getElementById('app'));
 		</script>
 </html>
