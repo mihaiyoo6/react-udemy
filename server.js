@@ -39,6 +39,8 @@ app.get('/reactServer', function(req, res){
 	});
 });
 
+app.use('/gulp', express.static(path.join(__dirname, 'client/gulp-react')));
+
 
 //BOdyPArser Middleware
 app.use(bodyParser.json());
