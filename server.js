@@ -1,9 +1,19 @@
 var express = require('express'),
 	path = require('path'),
 	bodyParser = require('body-parser'),
-	fs = require('fs');
+	fs = require('fs')
+	React = require('react'),
+	ReactDOMServer = require('react-dom/server'),
+	expHbs = require('express-handlebars');
+	require('babel/register');
+var MyComponent = React.createFactory(require('./client/reactServer/components/MyComponent.js').MyComponent);
 
 var app = express();
+
+app.set('views', path.join(__dirname, 'client/reactServer/views/'));
+app.engine('handlebars', expHbs({defaultLayout: '../../client/reactServer/views/layouts/main'}));
+app.set('view engine', 'handlebars');
+
 
 var PRODUCTS_FILE = path.join(__dirname, '/data/products.json');
 //set port
@@ -21,6 +31,15 @@ app.use('/state', express.static(path.join(__dirname, 'client/nav')));
 app.use('/ajax', express.static(path.join(__dirname, 'client/ajax')));
 app.use('/animation', express.static(path.join(__dirname, 'client/animation')));
 app.use('/bind', express.static(path.join(__dirname, 'client/dataBinding')));
+
+var markup = ReactDOMServer.renderToString(MyComponent());
+app.get('/reactServer', function(req, res){
+	res.render('home',{
+		markup: markup
+	});
+});
+
+
 //BOdyPArser Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
