@@ -88,6 +88,14 @@
 						}
 					});
 				},
+				onFormSubmit: function(userName){
+					this.setState({
+						userName: userName
+					}, function(){
+						this.loadUserData();
+						this.loadRepoData();
+					})
+				},
 				componentDidMount: function() {
 					this.loadUserData();
 					this.loadRepoData();
@@ -95,6 +103,7 @@
 				render: function(){
 					return(
 						<div>
+							<SearchForm  onFormSubmit={this.onFormSubmit}/>
 							<UserInfo userData={this.state.userData} />
 							<Repos repoData={this.state.repoData} />
 						</div>
@@ -169,7 +178,30 @@
 						</div>
 					);
 				}
-			})
+			});
+
+			var SearchForm = React.createClass({
+				submitForm: function(e){
+					e.preventDefault();
+					var userName = this.refs.userName.value.trim();
+					if(!userName){
+						alert('Please Enter User');
+						return
+					}
+					this.props.onFormSubmit(userName);
+					this.refs.userName.value = '';
+				},
+				render: function(){
+					return(
+						<form onSubmit={this.submitForm} className="well row form-inline">
+						<div className="form-group col-md-8">
+							<input type="text" ref='userName' className="form-control searchInput" placeholder="Enter GitHub userName" style={{width: "100%"}} />
+						</div>
+							<button type="submit" className="btn btn-primary col-md-4">Submit</button>
+						</form>
+					);
+				}
+			});
 
 			ReactDOM.render(<Profile />, document.getElementById('app'));
 		</script>
