@@ -1,0 +1,176 @@
+<html>
+	<head>
+		<title>UDEMY - React</title>
+		<!--<link rel="stylesheet" href="../styles/bootstrap.3.3.5.min.css">-->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<style>
+			body {
+				margin-top: 20px;
+			}
+			.label{
+				margin-left: 20px;
+			}
+			.top-buffer { 
+				margin-top:20px; 
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3">
+					<div id="app"></div>
+				</div>
+			</div>
+		</div>
+	</body>
+		<script src="../libs/react-0.14.3.js"></script>
+		<script src="../libs/react-dom-0.14.3.js"></script>
+		<script src="../libs/browser.5.8.25.min.js"></script>
+		<script src="../libs/jquery-1.11.3.min.js"></script>
+		<script type="text/babel">
+			var Profile = React.createClass({
+				getDefaultProps: function() {
+				    return {
+				       	clientId: '3d3c9762dcdf7f77ac52',
+				        clientSecret: 'b1f11d261aa9c95cbd97a20359fe4b4af65e507f',
+				    	urls:{
+				        	user: 'https://api.github.com/users/',
+				       	},
+				       	per_page: 5
+				    };
+				},
+				getInitialState: function() {
+				    return {
+				    	userName: 'mihaiyoo6',
+				    	userData: [],
+				    	repoData: []
+				    };
+				},
+				loadUserData: function(){
+					var self = this;
+					console.log(this.props.urls.user + this.state.userName + "?client_id="+ this.props.clientId +'&client_secret='+ this.props.clientSecret);
+					$.ajax({
+						url: this.props.urls.user + this.state.userName + "?client_id="+ this.props.clientId +'&client_secret='+ this.props.clientSecret,
+						dataType: 'json',
+						cache: false,
+						success: function(data){
+							console.log(data);
+							self.setState({userData: data});
+						},
+						error: function(xhr, status, err){
+							self.setState({
+								userData: null
+							});
+							alert(err.message);
+
+						}
+					});
+				},
+				loadRepoData: function(){
+					var self = this;
+
+					$.ajax({
+						url: this.props.urls.user+ this.state.userName + "/repos?per_page="+ this.props.per_page +"&client_id="+ this.props.clientId +"&client_secret="+ this.props.clientSecret+ "&sort=created",
+						dataType: 'json',
+						cache: false,
+						success: function(data){
+							console.log(self.props.urls.user+ self.state.userName + "/repos?per_page="+ self.props.per_page +"&client_id="+ self.props.clientId +'&client_secret='+ self.props.clientSecret+ "&sort=created");
+							console.log(data);
+							self.setState({repoData: data});
+						},
+						error: function(xhr, status, err){
+							self.setState({
+								userData: null
+							});
+							alert(err.message);
+
+						}
+					});
+				},
+				componentDidMount: function() {
+					this.loadUserData();
+					this.loadRepoData();
+				},
+				render: function(){
+					return(
+						<div>
+							<UserInfo userData={this.state.userData} />
+							<Repos repoData={this.state.repoData} />
+						</div>
+					);
+				}
+			});
+
+			var UserInfo = React.createClass({
+				render: function(){
+					return(
+						<div>
+							<div className="row">
+								<div className="col-md-4">
+									<img className="thumbnail" style={{width:"100%"}} src={this.props.userData.avatar_url} />
+								</div>
+								<div className="col-md-8">
+									<h3>{this.props.userData.name}</h3>
+									<div className="row top-buffer">
+										<div className="label label-primary">
+											{this.props.userData.public_repos} Repos
+										</div>
+										<div className="label label-success">
+											{this.props.userData.public_gists} Gists
+										</div>
+										<div className="label label-danger">
+											{this.props.userData.followers} Followers
+										</div>
+										<div className="label label-info">
+											{this.props.userData.following} Following
+										</div>
+									</div>
+									<a className="btn btn-primary top-buffer" target="_blank" href={this.props.userData.html_url}>Visit Github Page</a>
+								</div>								
+							</div>
+							<div className="row">
+								<div className="col-md-12">
+									<ul className="list-group">
+										<li className="list-group-item">User Name: {this.props.userData.login}</li>
+										<li className="list-group-item">User Email: {this.props.userData.email}</li>
+										<li className="list-group-item">Location: {this.props.userData.location}</li>
+										<li className="list-group-item">Blog: <a href={this.props.userData.blog} target="_blank">{this.props.userData.blog}</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					);
+				}
+			});
+
+			var Repos = React.createClass({
+				render: function(){
+					var repoNodes = this.props.repoData.map(function(item, index){
+						return (
+							<Repo repoData={item} key={index} />
+						);
+					});
+					return(
+						<div>
+							<h2 className="page-header">Latest Repos</h2>
+							{repoNodes}
+						</div>
+					);
+				}
+			});
+
+			var Repo = React.createClass({
+				render: function(){
+					return(
+						<div className="well">
+							<h4><a target="_blank" href={this.props.repoData.html_url}>{this.props.repoData.name}</a></h4>
+							<p>{this.props.repoData.description}</p>
+						</div>
+					);
+				}
+			})
+
+			ReactDOM.render(<Profile />, document.getElementById('app'));
+		</script>
+</html>
